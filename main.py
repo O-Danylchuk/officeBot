@@ -1,6 +1,6 @@
 import discord
 import asyncio
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord.ui import Button, View
 from dotenv import load_dotenv
 from datetime import datetime, time, timedelta
@@ -26,7 +26,7 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
     reset_status.start()
 
-@asyncio.tasks.loop(hours=24)
+@tasks.loop(hours=24)
 async def reset_status():
     now = datetime.now()
     reset_time = time(20, 0)
