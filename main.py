@@ -130,6 +130,7 @@ async def office(ctx):
     """
     if office_schedule["today"]:
         now = datetime.now().time()
+        await ctx.send(f"time for now: {now}")
         for person, times in office_schedule["today"].items():
             if times["start"] <= now <= times["end"]:
                 await ctx.send(f"✅ {person} is in the office!")
