@@ -139,7 +139,7 @@ async def office(ctx):
     await ctx.send("❌ The office is empty!")
 
 @bot.command()
-async def help(ctx):
+async def ohelp(ctx):
     """
     Show the help message.
     Usage: !help
