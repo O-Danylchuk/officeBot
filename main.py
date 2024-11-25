@@ -4,6 +4,7 @@ from discord.ext import commands, tasks
 from discord.ui import Button, View
 from dotenv import load_dotenv
 from datetime import datetime, time, timedelta
+from zoneinfo import ZoneInfo
 import os
 
 load_dotenv()
@@ -128,8 +129,8 @@ async def office(ctx):
     See if there are any people in office right now.
     Usage: !office
     """
+    now = datetime.now(ZoneInfo("Europe/Kyiv")).time()
     if office_schedule["today"]:
-        now = datetime.now().time()
         await ctx.send(f"time for now: {now}")
         for person, times in office_schedule["today"].items():
             if times["start"] <= now <= times["end"]:
