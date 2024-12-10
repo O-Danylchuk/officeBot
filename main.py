@@ -68,12 +68,13 @@ async def officeSet(ctx):
     await ctx.send("Set office status:", view=view)
 
 @bot.command()
-async def schedule(ctx, person: str, day: str, start_time: str, end_time: str):
+async def schedule(ctx, day: str, start_time: str, end_time: str):
     """
     Add or update the office schedule for a person.
     Usage: !schedule <person> <today/tomorrow> <start_time> <end_time>
     Example: !schedule Alice today 09:00 17:00
     """
+    person = ctx.author.name
     if day.lower() not in ["today", "tomorrow"]:
         await ctx.send("❌ Day must be 'today' or 'tomorrow' (this will be expanded in the near future).")
         return
